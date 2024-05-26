@@ -1,15 +1,15 @@
 {
     "version": 2,
-    "build": [
-        {
-        "src": "./indicadorAPI.js",
+    "builds": [
+      {
+        "src": "indicadorAPI.js",
         "use": "@vercel/node"
-        }
+      }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "indicadorAPI.js"
-        }
+      {
+        "src": "/(.*)",
+        "dest": "indicadorAPI.js"
+      }
     ]
-}
+  }
