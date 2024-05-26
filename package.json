@@ -1,5 +1,5 @@
 {
-  "name": "nova-pasta",
+  "name": "api-dash",
   "version": "1.0.0",
   "main": "indicadorAPI.js",
   "engines": {
