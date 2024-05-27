@@ -23,7 +23,17 @@ db.connect((err) => {
     console.log('Conectado ao banco de dados MySQL');
 });
 
-app.use(cors());
+const allowedOrigins = ['https://665322ae8877866874eb1150--cheerful-syrniki-99e4e6.netlify.app'];
+app.use(cors({
+    origin: function(origin, callback){
+        if(!origin) return callback(null, true);
+        if(allowedOrigins.indexOf(origin) === -1){
+            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
+}));
 
 app.get('/indicador', (req, res) => {
     db.query('SELECT * FROM tbIndicador', (err, result) => {
