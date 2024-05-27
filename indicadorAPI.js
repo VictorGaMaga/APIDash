@@ -23,7 +23,10 @@ db.connect((err) => {
     console.log('Conectado ao banco de dados MySQL');
 });
 
-const allowedOrigins = ['https://665322ae8877866874eb1150--cheerful-syrniki-99e4e6.netlify.app'];
+const allowedOrigins = [
+    'https://665322ae8877866874eb1150--cheerful-syrniki-99e4e6.netlify.app',
+    'https://teste-conexao.netlify.app'
+];
 app.use(cors({
     origin: function(origin, callback){
         if(!origin) return callback(null, true);
