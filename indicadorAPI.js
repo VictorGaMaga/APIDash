@@ -17,23 +17,25 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
     if (err) {
-      throw err;
+        console.error('Erro ao conectar ao banco de dados MySQL:', err);
+        throw err;
     }
     console.log('Conectado ao banco de dados MySQL');
-  });
-  app.use(cors());
-  app.get('/indicador', (req, res) => {
+});
+
+app.use(cors());
+
+app.get('/indicador', (req, res) => {
     db.query('SELECT * FROM tbIndicador', (err, result) => {
-      if (err) {
-        console.error('Erro ao executar a consulta SQL:', err);
-        res.status(500).json({ error: 'Erro ao recuperar indicador' });
-        return;
-      }
-      res.json(result);
+        if (err) {
+            console.error('Erro ao executar a consulta SQL:', err);
+            res.status(500).json({ error: 'Erro ao recuperar indicador' });
+            return;
+        }
+        res.json(result);
     });
-  });
+});
 
-
-  app.listen(port, () => {
+app.listen(port, () => {
     console.log(`Servidor Express rodando na porta ${port}`);
-  });
+});
